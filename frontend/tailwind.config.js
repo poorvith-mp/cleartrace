@@ -8,27 +8,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: '#080c14',
+        // 60% Dominant Canvas
+        canvas: {
+          DEFAULT: '#070a10',
+          inset: '#04060a',
+        },
+        // 30% Structural Surfaces
         surface: {
-          DEFAULT: '#0f172a',
-          hover: '#1e293b',
-          muted: '#151f32'
+          DEFAULT: '#0d131f',
+          hover: '#141d2f',
+          plate: '#101726',
+          border: '#1a2436',
+          borderLight: '#26344d',
         },
-        border: {
-          subtle: '#1e293b',
-          bright: '#334155'
-        },
-        accent: {
-          blue: '#3b82f6',
-          amber: '#f59e0b',
-          emerald: '#10b981',
-          crimson: '#ef4444',
-          slate: '#94a3b8'
+        // 10% Intentional Accents (Color Psychology - ZERO PURPLE)
+        brand: {
+          blue: '#1d4ed8',     // Primary Action / Trust
+          cyan: '#0284c7',     // Vector / Embedding data
+          emerald: '#059669',  // Verified Safe / Delisted
+          amber: '#d97706',    // Pending Consent / Warning
+          crimson: '#dc2626',  // Exposed PII / Re-appearance
+          slate: '#64748b',    // Neutral structure
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'Courier New', 'monospace']
+        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Consolas', 'monospace']
       }
     },
   },

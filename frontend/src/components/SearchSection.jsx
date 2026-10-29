@@ -11,25 +11,25 @@ export default function SearchSection({
   onStartScan
 }) {
   return (
-    <section className="data-card rounded-lg p-5 mb-6">
-      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-border-subtle mb-4 gap-3">
+    <section className="data-card p-5 mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-[#1a2436] mb-4 gap-3">
         <div>
           <h2 className="text-sm font-semibold text-white tracking-tight">Target Identity Verification Profile</h2>
           <p className="text-xs text-slate-400 mt-0.5">
-            Identify exposed records across data brokers using Indian name, phone, address, and workplace embeddings.
+            Audit exposed listings across data brokers using Indian name, phone, address, and workplace embeddings.
           </p>
         </div>
 
         <div className="flex items-center space-x-2">
-          <span className="text-xs text-slate-400">Load Persona:</span>
+          <span className="text-xs text-slate-400 font-medium">Pre-Seeded Persona:</span>
           {DEMO_PERSONAS.map((persona) => (
             <button
               key={persona.id}
               onClick={() => onSelectPersona(persona)}
-              className={`text-xs px-2.5 py-1 rounded transition border ${
+              className={`text-xs px-2.5 py-1 rounded transition border font-medium ${
                 selectedPersona?.id === persona.id
-                  ? 'border-blue-500 bg-blue-950/60 text-blue-200'
-                  : 'border-border-subtle bg-surface-muted text-slate-300 hover:border-slate-500'
+                  ? 'border-blue-500 bg-blue-950/40 text-blue-300'
+                  : 'border-[#1a2436] bg-[#070a10] text-slate-300 hover:border-slate-500'
               }`}
             >
               {persona.name}
@@ -45,7 +45,7 @@ export default function SearchSection({
             type="text"
             value={profile.name}
             onChange={(e) => onProfileChange('name', e.target.value)}
-            className="w-full bg-[#080c14] border border-border-subtle rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 font-mono"
+            className="w-full bg-[#04060a] border border-[#1a2436] rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 font-mono"
             placeholder="e.g. Pooja Sharma"
           />
         </div>
@@ -56,7 +56,7 @@ export default function SearchSection({
             type="text"
             value={profile.phone}
             onChange={(e) => onProfileChange('phone', e.target.value)}
-            className="w-full bg-[#080c14] border border-border-subtle rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 font-mono"
+            className="w-full bg-[#04060a] border border-[#1a2436] rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 font-mono"
             placeholder="e.g. +91 98450 12345"
           />
         </div>
@@ -67,7 +67,7 @@ export default function SearchSection({
             type="text"
             value={profile.address}
             onChange={(e) => onProfileChange('address', e.target.value)}
-            className="w-full bg-[#080c14] border border-border-subtle rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 text-xs"
+            className="w-full bg-[#04060a] border border-[#1a2436] rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 text-xs"
             placeholder="e.g. Koramangala 4th Block, Bengaluru"
           />
         </div>
@@ -78,25 +78,25 @@ export default function SearchSection({
             type="text"
             value={profile.workplace}
             onChange={(e) => onProfileChange('workplace', e.target.value)}
-            className="w-full bg-[#080c14] border border-border-subtle rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 text-xs"
+            className="w-full bg-[#04060a] border border-[#1a2436] rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-blue-500 text-xs"
             placeholder="e.g. Senior SDE, Swiggy"
           />
         </div>
       </div>
 
       {selectedPersona?.threatContext && (
-        <div className="mt-4 p-3 rounded bg-amber-950/20 border border-amber-800/30 flex items-start space-x-2 text-xs text-amber-300">
+        <div className="mt-4 p-3 rounded bg-amber-950/20 border border-amber-800/40 flex items-start space-x-2 text-xs text-amber-300">
           <AlertTriangle className="w-4 h-4 flex-shrink-0 text-amber-400 mt-0.5" />
           <span>
-            <strong>Threat Profile:</strong> {selectedPersona.threatContext}
+            <strong className="text-amber-200">Threat Profile:</strong> {selectedPersona.threatContext}
           </span>
         </div>
       )}
 
-      <div className="mt-5 flex items-center justify-between pt-4 border-t border-border-subtle">
+      <div className="mt-5 flex items-center justify-between pt-4 border-t border-[#1a2436]">
         <div className="text-xs text-slate-400 flex items-center space-x-2">
           <UserCheck className="w-4 h-4 text-emerald-400" />
-          <span>Verification Token: <span className="font-mono text-slate-300">CT-SEC12-AUTH-VERIFIED</span></span>
+          <span>Verification Status: <span className="font-mono text-slate-300">CT-SEC12-AUTH-VERIFIED</span></span>
         </div>
 
         <button

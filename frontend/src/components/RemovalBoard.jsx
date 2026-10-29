@@ -1,19 +1,19 @@
 import React from 'react';
-import { Clock, Send, CheckCircle2, AlertOctagon } from 'lucide-react';
+import { Clock, CheckCircle2, AlertOctagon } from 'lucide-react';
 
 export default function RemovalBoard({ findings, onUpdateState }) {
   const lanes = [
     { key: 'Found', title: 'Found (Pending Consent)', color: 'text-amber-400', border: 'border-amber-800/40' },
     { key: 'Authorised', title: 'Authorised by User', color: 'text-blue-400', border: 'border-blue-800/40' },
-    { key: 'Requested', title: 'Legal Notice Dispatched', color: 'text-purple-400', border: 'border-purple-800/40' },
+    { key: 'Requested', title: 'Legal Notice Dispatched', color: 'text-sky-400', border: 'border-sky-800/40' },
     { key: 'Removed', title: 'Verified Removed', color: 'text-emerald-400', border: 'border-emerald-800/40' }
   ];
 
   const reAppearedFindings = findings.filter(f => f.state === 'Re-appeared');
 
   return (
-    <div className="data-card rounded-lg p-5 mb-6">
-      <div className="flex items-center justify-between pb-3 border-b border-border-subtle mb-4">
+    <div className="data-card p-5 mb-6">
+      <div className="flex items-center justify-between pb-3 border-b border-[#1a2436] mb-4">
         <div>
           <h3 className="text-sm font-semibold text-white">Removal Lifecycle Tracker (State Machine)</h3>
           <p className="text-xs text-slate-400 mt-0.5">
@@ -28,7 +28,7 @@ export default function RemovalBoard({ findings, onUpdateState }) {
       </div>
 
       {reAppearedFindings.length > 0 && (
-        <div className="mb-4 p-3 rounded bg-red-950/40 border border-red-700 text-xs text-red-200 flex items-center justify-between">
+        <div className="mb-4 p-3 rounded bg-red-950/40 border border-red-700/60 text-xs text-red-200 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <AlertOctagon className="w-4 h-4 text-red-400 flex-shrink-0" />
             <span>
@@ -48,10 +48,10 @@ export default function RemovalBoard({ findings, onUpdateState }) {
         {lanes.map((lane) => {
           const items = findings.filter(f => f.state === lane.key);
           return (
-            <div key={lane.key} className="p-3 rounded bg-[#080c14] border border-border-subtle flex flex-col min-h-[160px]">
-              <div className="flex items-center justify-between pb-2 border-b border-border-subtle mb-2">
+            <div key={lane.key} className="p-3 rounded bg-[#04060a] border border-[#161e2e] flex flex-col min-h-[160px]">
+              <div className="flex items-center justify-between pb-2 border-b border-[#161e2e] mb-2">
                 <span className={`text-xs font-semibold ${lane.color}`}>{lane.title}</span>
-                <span className="font-mono text-xs px-1.5 py-0.2 rounded bg-surface text-slate-300">
+                <span className="font-mono text-xs px-1.5 py-0.2 rounded bg-[#0d131f] text-slate-300 border border-[#1a2436]">
                   {items.length}
                 </span>
               </div>
@@ -61,7 +61,7 @@ export default function RemovalBoard({ findings, onUpdateState }) {
                   <div className="text-[11px] text-slate-600 italic py-4 text-center">No records in this state</div>
                 ) : (
                   items.map((item) => (
-                    <div key={item.id} className="p-2.5 rounded bg-surface border border-border-subtle text-xs">
+                    <div key={item.id} className="p-2.5 rounded bg-[#0d131f] border border-[#1a2436] text-xs">
                       <div className="font-medium text-white flex items-center justify-between">
                         <span>{item.brokerName}</span>
                         <span className="text-[10px] font-mono text-blue-400">{item.matchDetails.solutionBScore}%</span>
@@ -69,7 +69,7 @@ export default function RemovalBoard({ findings, onUpdateState }) {
                       <div className="text-[11px] text-slate-400 truncate mt-1">{item.exposedAddress}</div>
 
                       {lane.key === 'Requested' && (
-                        <div className="mt-2 pt-2 border-t border-border-subtle flex items-center justify-between text-[10px]">
+                        <div className="mt-2 pt-2 border-t border-[#1a2436] flex items-center justify-between text-[10px]">
                           <span className="text-amber-400 flex items-center space-x-1">
                             <Clock className="w-3 h-3" />
                             <span>SLA Active</span>

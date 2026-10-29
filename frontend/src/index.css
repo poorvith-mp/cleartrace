@@ -4,21 +4,27 @@
 
 @layer base {
   body {
-    background-color: #080c14;
-    color: #f1f5f9;
+    background-color: #070a10;
+    color: #f8fafc;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 }
 
-/* Taste-skill: Quiet, functional styling without generic template slop */
+/* 60-30-10 Taste Architecture */
 .data-card {
-  background-color: #0f172a;
-  border: 1px solid #1e293b;
+  background-color: #0d131f;
+  border: 1px solid #1a2436;
+  border-radius: 6px;
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .data-card:hover {
-  border-color: #334155;
+  border-color: #26344d;
+}
+
+.data-well {
+  background-color: #04060a;
+  border: 1px solid #161e2e;
 }
 
 .mono-metric {
@@ -26,18 +32,18 @@
   letter-spacing: -0.02em;
 }
 
-/* Custom minimal scrollbar */
+/* Minimalist engineering scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #080c14;
+  background: #070a10;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 3px;
+  background: #1a2436;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #26344d;
 }

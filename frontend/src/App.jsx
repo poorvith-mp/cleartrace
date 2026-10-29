@@ -9,7 +9,7 @@ import RescanDiff from './components/RescanDiff';
 import BenchmarkModal from './components/BenchmarkModal';
 import InteractiveTour from './components/InteractiveTour';
 import { DEMO_PERSONAS, INITIAL_FINDINGS, DISTRACTOR_RECORDS } from './data/mockData';
-import { Shield, Database, Lock, AlertTriangle, Layers, Activity } from 'lucide-react';
+import { Activity } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function App() {
@@ -91,7 +91,6 @@ export default function App() {
   };
 
   const handleTriggerRescan = () => {
-    // Check if any removed items exist
     const hasRemoved = findings.some(f => f.state === 'Removed');
     if (!hasRemoved) {
       alert("No records are currently in the 'Removed' state. Authorize a removal first to observe before/after diff verification.");
@@ -101,7 +100,6 @@ export default function App() {
   };
 
   const handleSimulateReappearance = () => {
-    // Pick the first removed finding and flip it to Re-appeared
     const removedItem = findings.find(f => f.state === 'Removed');
     if (removedItem) {
       setFindings(prev => prev.map(f => {
@@ -111,7 +109,6 @@ export default function App() {
         return f;
       }));
     } else {
-      // Pick finding-1
       setFindings(prev => prev.map((f, i) => i === 0 ? { ...f, state: 'Re-appeared' } : f));
     }
   };
@@ -122,7 +119,6 @@ export default function App() {
       if (tourStep === 0) handleStartScan();
       if (tourStep === 1) setActiveTab('findings');
       if (tourStep === 2) {
-        // Open consent modal for finding 1
         setSelectedConsentFinding(findings[0]);
       }
       if (tourStep === 3) {
@@ -141,7 +137,7 @@ export default function App() {
   const verifiedRemoved = findings.filter(f => f.state === 'Removed').length;
 
   return (
-    <div className="min-h-screen bg-[#080c14] text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-[#070a10] text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       <Header
         onOpenBenchmark={() => setIsBenchmarkOpen(true)}
         onStartTour={() => {
@@ -158,36 +154,36 @@ export default function App() {
           onResetTour={() => setIsTourActive(false)}
         />
 
-        {/* System Summary Metrics */}
+        {/* 60-30-10 System Metric Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="data-card rounded-lg p-4">
-            <div className="text-xs text-slate-400">Inspected Broker Sites</div>
+          <div className="data-card p-4">
+            <div className="text-xs text-slate-400 font-medium">Inspected Broker Sites</div>
             <div className="text-2xl font-bold font-mono text-white mt-1">5</div>
             <div className="text-[11px] text-blue-400 mt-0.5">Tables, APIs, Grids & Divs</div>
           </div>
 
-          <div className="data-card rounded-lg p-4">
-            <div className="text-xs text-slate-400">Active PII Exposures</div>
+          <div className="data-card p-4">
+            <div className="text-xs text-slate-400 font-medium">Active PII Exposures</div>
             <div className={`text-2xl font-bold font-mono mt-1 ${activeExposures > 0 ? 'text-amber-400' : 'text-slate-400'}`}>
               {activeExposures}
             </div>
             <div className="text-[11px] text-amber-500/80 mt-0.5">Pending Erasure</div>
           </div>
 
-          <div className="data-card rounded-lg p-4">
-            <div className="text-xs text-slate-400">Verified Removed (Scrubbed)</div>
+          <div className="data-card p-4">
+            <div className="text-xs text-slate-400 font-medium">Verified Removed (Scrubbed)</div>
             <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">{verifiedRemoved}</div>
             <div className="text-[11px] text-emerald-500/80 mt-0.5">DPDP Sec 12 Proof</div>
           </div>
 
-          <div className="data-card rounded-lg p-4">
-            <div className="text-xs text-slate-400">Matching Engine Accuracy</div>
-            <div className="text-2xl font-bold font-mono text-purple-400 mt-1">96.4%</div>
-            <div className="text-[11px] text-purple-400/80 mt-0.5">Solution B (Embeddings)</div>
+          <div className="data-card p-4">
+            <div className="text-xs text-slate-400 font-medium">Matching Engine Accuracy</div>
+            <div className="text-2xl font-bold font-mono text-blue-400 mt-1">96.4%</div>
+            <div className="text-[11px] text-blue-400/80 mt-0.5">Solution B (Embeddings)</div>
           </div>
         </div>
 
-        {/* Input Profile Bar */}
+        {/* Target Profile Input */}
         <SearchSection
           selectedPersona={selectedPersona}
           onSelectPersona={handleSelectPersona}
@@ -197,14 +193,14 @@ export default function App() {
           onStartScan={handleStartScan}
         />
 
-        {/* Live Connector Status Feed */}
+        {/* Broker Scanner Status */}
         <ScannerFeed
           isScanning={isScanning}
           scanProgress={scanProgress}
         />
 
         {/* View Switcher Tabs */}
-        <div className="flex items-center space-x-2 border-b border-border-subtle mb-6 text-xs">
+        <div className="flex items-center space-x-2 border-b border-[#1a2436] mb-6 text-xs">
           <button
             onClick={() => setActiveTab('findings')}
             className={`pb-3 px-3 font-medium transition border-b-2 ${
@@ -239,7 +235,7 @@ export default function App() {
           </button>
         </div>
 
-        {/* Tab 1: Match Findings Cards */}
+        {/* Tab 1: Match Findings */}
         {activeTab === 'findings' && (
           <div>
             <div className="flex items-center justify-between mb-4">
@@ -267,19 +263,19 @@ export default function App() {
             </div>
 
             {/* Same-name strangers rejection proof */}
-            <div className="mt-8 p-4 rounded bg-[#080c14] border border-border-subtle">
-              <h4 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+            <div className="mt-8 p-4 rounded bg-[#0d131f] border border-[#1a2436]">
+              <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                 Verification Proof: False Positive Rejection (Same-Name Strangers)
               </h4>
-              <p className="text-xs text-slate-500 mb-3">
-                The engine successfully filtered out candidate records with matching names but discordant address/phone vectors:
+              <p className="text-xs text-slate-400 mb-3">
+                The engine filtered out candidate records with identical names but discordant address/phone vectors:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                 {DISTRACTOR_RECORDS.map((d) => (
-                  <div key={d.id} className="p-3 rounded bg-surface border border-border-subtle font-mono text-[11px] text-slate-400">
+                  <div key={d.id} className="p-3 rounded bg-[#04060a] border border-[#161e2e] font-mono text-[11px] text-slate-400">
                     <div>Broker: <span className="text-slate-200">{d.brokerName}</span></div>
                     <div>Exposed: <span className="text-slate-300">{d.exposedName}</span> ({d.exposedAddress})</div>
-                    <div>Score: <span className="text-red-400">{d.score}%</span> — <span className="text-emerald-400">{d.status}</span></div>
+                    <div>Score: <span className="text-red-400 font-semibold">{d.score}%</span> — <span className="text-emerald-400">{d.status}</span></div>
                   </div>
                 ))}
               </div>
@@ -306,12 +302,12 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border-subtle py-6 bg-[#080c14] text-center text-xs text-slate-500">
+      <footer className="border-t border-[#1a2436] py-6 bg-[#070a10] text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
           <div>
             ClearTrace — Automated Consent-Governed Personal Data Removal Platform
           </div>
-          <div className="font-mono text-[11px]">
+          <div className="font-mono text-[11px] text-slate-400">
             DPDP Act 2023 Sec 12 & 13 | Team SyntaxSyndicate
           </div>
         </div>
