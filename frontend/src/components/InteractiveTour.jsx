@@ -35,19 +35,19 @@ export default function InteractiveTour({
   const step = tourSteps[currentStep] || tourSteps[0];
 
   return (
-    <div className="bg-[#0d131f] border border-blue-500/40 rounded-lg p-4 mb-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+    <div className="bg-[#141417] border border-blue-500/40 rounded-lg p-4 mb-6 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
       <div className="flex items-start space-x-3">
         <div className="w-7 h-7 rounded bg-blue-600 text-white flex items-center justify-center font-mono text-xs font-bold flex-shrink-0 mt-0.5">
           {currentStep + 1}
         </div>
         <div>
           <div className="flex items-center space-x-2">
-            <span className="text-xs font-semibold text-white uppercase tracking-wider font-mono">
+            <span className="text-xs font-semibold text-[#fafafa] uppercase tracking-wider font-mono">
               Guided Evaluation Mode ({currentStep + 1}/5)
             </span>
             <span className="text-xs font-bold text-blue-400">— {step.title}</span>
           </div>
-          <p className="text-xs text-slate-300 mt-1 leading-relaxed max-w-3xl">
+          <p className="text-xs text-[#d4d4d8] mt-1 leading-relaxed max-w-3xl">
             {step.desc}
           </p>
         </div>
@@ -56,7 +56,7 @@ export default function InteractiveTour({
       <div className="flex items-center space-x-2 flex-shrink-0">
         <button
           onClick={onResetTour}
-          className="text-xs px-2.5 py-1.5 rounded border border-[#1a2436] bg-[#070a10] text-slate-400 hover:text-white transition flex items-center space-x-1"
+          className="text-xs px-2.5 py-1.5 rounded border border-[#27272a] bg-[#09090b] text-[#a1a1aa] hover:text-[#fafafa] transition flex items-center space-x-1 font-medium"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Exit Tour</span>

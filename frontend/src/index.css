@@ -4,27 +4,27 @@
 
 @layer base {
   body {
-    background-color: #070a10;
-    color: #f8fafc;
+    background-color: #09090b;
+    color: #fafafa;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 }
 
-/* 60-30-10 Taste Architecture */
+/* 60-30-10 Pure Neutral Architecture */
 .data-card {
-  background-color: #0d131f;
-  border: 1px solid #1a2436;
+  background-color: #141417;
+  border: 1px solid #27272a;
   border-radius: 6px;
   transition: border-color 0.15s ease, background-color 0.15s ease;
 }
 
 .data-card:hover {
-  border-color: #26344d;
+  border-color: #3f3f46;
 }
 
 .data-well {
-  background-color: #04060a;
-  border: 1px solid #161e2e;
+  background-color: #050507;
+  border: 1px solid #27272a;
 }
 
 .mono-metric {
@@ -32,18 +32,18 @@
   letter-spacing: -0.02em;
 }
 
-/* Minimalist engineering scrollbar */
+/* Minimal engineering scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #070a10;
+  background: #09090b;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1a2436;
+  background: #27272a;
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #26344d;
+  background: #3f3f46;
 }

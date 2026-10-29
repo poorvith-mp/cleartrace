@@ -137,7 +137,7 @@ export default function App() {
   const verifiedRemoved = findings.filter(f => f.state === 'Removed').length;
 
   return (
-    <div className="min-h-screen bg-[#070a10] text-slate-100 flex flex-col font-sans selection:bg-blue-600 selection:text-white">
+    <div className="min-h-screen bg-[#09090b] text-[#fafafa] flex flex-col font-sans selection:bg-blue-600 selection:text-white">
       <Header
         onOpenBenchmark={() => setIsBenchmarkOpen(true)}
         onStartTour={() => {
@@ -157,27 +157,27 @@ export default function App() {
         {/* 60-30-10 System Metric Cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <div className="data-card p-4">
-            <div className="text-xs text-slate-400 font-medium">Inspected Broker Sites</div>
-            <div className="text-2xl font-bold font-mono text-white mt-1">5</div>
+            <div className="text-xs text-[#a1a1aa] font-medium">Inspected Broker Sites</div>
+            <div className="text-2xl font-bold font-mono text-[#fafafa] mt-1">5</div>
             <div className="text-[11px] text-blue-400 mt-0.5">Tables, APIs, Grids & Divs</div>
           </div>
 
           <div className="data-card p-4">
-            <div className="text-xs text-slate-400 font-medium">Active PII Exposures</div>
-            <div className={`text-2xl font-bold font-mono mt-1 ${activeExposures > 0 ? 'text-amber-400' : 'text-slate-400'}`}>
+            <div className="text-xs text-[#a1a1aa] font-medium">Active PII Exposures</div>
+            <div className={`text-2xl font-bold font-mono mt-1 ${activeExposures > 0 ? 'text-amber-400' : 'text-[#a1a1aa]'}`}>
               {activeExposures}
             </div>
             <div className="text-[11px] text-amber-500/80 mt-0.5">Pending Erasure</div>
           </div>
 
           <div className="data-card p-4">
-            <div className="text-xs text-slate-400 font-medium">Verified Removed (Scrubbed)</div>
+            <div className="text-xs text-[#a1a1aa] font-medium">Verified Removed (Scrubbed)</div>
             <div className="text-2xl font-bold font-mono text-emerald-400 mt-1">{verifiedRemoved}</div>
             <div className="text-[11px] text-emerald-500/80 mt-0.5">DPDP Sec 12 Proof</div>
           </div>
 
           <div className="data-card p-4">
-            <div className="text-xs text-slate-400 font-medium">Matching Engine Accuracy</div>
+            <div className="text-xs text-[#a1a1aa] font-medium">Matching Engine Accuracy</div>
             <div className="text-2xl font-bold font-mono text-blue-400 mt-1">96.4%</div>
             <div className="text-[11px] text-blue-400/80 mt-0.5">Solution B (Embeddings)</div>
           </div>
@@ -200,13 +200,13 @@ export default function App() {
         />
 
         {/* View Switcher Tabs */}
-        <div className="flex items-center space-x-2 border-b border-[#1a2436] mb-6 text-xs">
+        <div className="flex items-center space-x-2 border-b border-[#27272a] mb-6 text-xs">
           <button
             onClick={() => setActiveTab('findings')}
             className={`pb-3 px-3 font-medium transition border-b-2 ${
               activeTab === 'findings'
                 ? 'border-blue-500 text-blue-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                : 'border-transparent text-[#a1a1aa] hover:text-[#fafafa]'
             }`}
           >
             Match Findings & Confidence Cards ({findings.length})
@@ -217,7 +217,7 @@ export default function App() {
             className={`pb-3 px-3 font-medium transition border-b-2 ${
               activeTab === 'tracker'
                 ? 'border-blue-500 text-blue-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                : 'border-transparent text-[#a1a1aa] hover:text-[#fafafa]'
             }`}
           >
             Removal Lifecycle Tracker
@@ -228,7 +228,7 @@ export default function App() {
             className={`pb-3 px-3 font-medium transition border-b-2 ${
               activeTab === 'rescan'
                 ? 'border-blue-500 text-blue-400'
-                : 'border-transparent text-slate-400 hover:text-slate-200'
+                : 'border-transparent text-[#a1a1aa] hover:text-[#fafafa]'
             }`}
           >
             Re-Scan Verification & Proof Diff
@@ -239,8 +239,8 @@ export default function App() {
         {activeTab === 'findings' && (
           <div>
             <div className="flex items-center justify-between mb-4">
-              <div className="text-xs text-slate-400">
-                Displaying <strong className="text-white">{findings.length} findings</strong> scored with Solution B Hybrid Model (RapidFuzz + Sentence Transformers).
+              <div className="text-xs text-[#a1a1aa]">
+                Displaying <strong className="text-[#fafafa]">{findings.length} findings</strong> scored with Solution B Hybrid Model (RapidFuzz + Sentence Transformers).
               </div>
               <button
                 onClick={() => setIsBenchmarkOpen(true)}
@@ -263,18 +263,18 @@ export default function App() {
             </div>
 
             {/* Same-name strangers rejection proof */}
-            <div className="mt-8 p-4 rounded bg-[#0d131f] border border-[#1a2436]">
-              <h4 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            <div className="mt-8 p-4 rounded bg-[#141417] border border-[#27272a]">
+              <h4 className="text-xs font-semibold text-[#fafafa] uppercase tracking-wider mb-2">
                 Verification Proof: False Positive Rejection (Same-Name Strangers)
               </h4>
-              <p className="text-xs text-slate-400 mb-3">
+              <p className="text-xs text-[#a1a1aa] mb-3">
                 The engine filtered out candidate records with identical names but discordant address/phone vectors:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
                 {DISTRACTOR_RECORDS.map((d) => (
-                  <div key={d.id} className="p-3 rounded bg-[#04060a] border border-[#161e2e] font-mono text-[11px] text-slate-400">
-                    <div>Broker: <span className="text-slate-200">{d.brokerName}</span></div>
-                    <div>Exposed: <span className="text-slate-300">{d.exposedName}</span> ({d.exposedAddress})</div>
+                  <div key={d.id} className="p-3 rounded bg-[#050507] border border-[#27272a] font-mono text-[11px] text-[#a1a1aa]">
+                    <div>Broker: <span className="text-[#fafafa]">{d.brokerName}</span></div>
+                    <div>Exposed: <span className="text-[#d4d4d8]">{d.exposedName}</span> ({d.exposedAddress})</div>
                     <div>Score: <span className="text-red-400 font-semibold">{d.score}%</span> — <span className="text-emerald-400">{d.status}</span></div>
                   </div>
                 ))}
@@ -302,12 +302,12 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-[#1a2436] py-6 bg-[#070a10] text-center text-xs text-slate-500">
+      <footer className="border-t border-[#27272a] py-6 bg-[#09090b] text-center text-xs text-[#71717a]">
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-2">
           <div>
             ClearTrace — Automated Consent-Governed Personal Data Removal Platform
           </div>
-          <div className="font-mono text-[11px] text-slate-400">
+          <div className="font-mono text-[11px] text-[#a1a1aa]">
             DPDP Act 2023 Sec 12 & 13 | Team SyntaxSyndicate
           </div>
         </div>

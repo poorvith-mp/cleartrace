@@ -8,27 +8,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        // 60% Dominant Canvas
+        // 60% Pure Neutral Zinc Ground (Zero blue/purple tint)
         canvas: {
-          DEFAULT: '#070a10',
-          inset: '#04060a',
+          DEFAULT: '#09090b',
+          subtle: '#0f0f12',
+          inset: '#050507',
         },
-        // 30% Structural Surfaces
+        // 30% Structural Surfaces & Hairlines
         surface: {
-          DEFAULT: '#0d131f',
-          hover: '#141d2f',
-          plate: '#101726',
-          border: '#1a2436',
-          borderLight: '#26344d',
+          DEFAULT: '#141417',
+          hover: '#1c1c21',
+          plate: '#18181c',
+          border: '#27272a',
+          borderLight: '#3f3f46',
         },
-        // 10% Intentional Accents (Color Psychology - ZERO PURPLE)
-        brand: {
-          blue: '#1d4ed8',     // Primary Action / Trust
-          cyan: '#0284c7',     // Vector / Embedding data
-          emerald: '#059669',  // Verified Safe / Delisted
-          amber: '#d97706',    // Pending Consent / Warning
-          crimson: '#dc2626',  // Exposed PII / Re-appearance
-          slate: '#64748b',    // Neutral structure
+        // 10% Intentional Pure Accents (Strict Color Psychology)
+        accent: {
+          blue: '#2563eb',     // Action / Trust
+          cyan: '#0284c7',     // Semantic Vector Match
+          emerald: '#10b981',  // Confirmed Purged / Safe
+          amber: '#f59e0b',    // Caution / Pending Consent
+          crimson: '#ef4444',  // Active Risk / Exposed
+          slate: '#71717a',    // Neutral labels
         }
       },
       fontFamily: {
